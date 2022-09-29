@@ -3,6 +3,12 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     tags: [],
     search: "",
+    currentPage: 1,
+    pageSize: 24,
+    types: [],
+    chosenType: '',
+    subtypes: [],
+    chosenSubtype: '',
 };
 
 const filterSlice = createSlice({
@@ -30,7 +36,7 @@ const filterSlice = createSlice({
             state.chosenSubtype = action.payload;
             state.currentPage = 1;
         },
-        
+
         tagSelected: (state, action) => {
             state.tags.push(action.payload);
         },
