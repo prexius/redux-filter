@@ -112,6 +112,9 @@ const ProductSchema = new mongoose.Schema(
     trending: {
       type: Boolean,
     },
+    types: {
+      type: String,
+    },
     // rating: {
     //     type: Number,
     //     min: 0,

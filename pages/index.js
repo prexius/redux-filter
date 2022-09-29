@@ -9,8 +9,8 @@ function Home() {
 	const dispatch = useDispatch()
 
 	const { products, isLoading, isError, error } = useSelector(state => state.products)
-	// console.log(products);
 	const { tags, search, types } = useSelector((state) => state.filter);
+	console.log(types);
 
 	useEffect(() => {
 		dispatch(fetchProducts({ tags, search, types }))

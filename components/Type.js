@@ -1,22 +1,20 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { getTypes, tagSelected } from "../redux/filter/filter";
+import { useDispatch } from 'react-redux';
+import { getTypes } from "../redux/filter/filter";
 
 
 const Types = ({ types }) => {
 
     const dispatch = useDispatch();
-    const { types: selectedTypes } = useSelector((state) => state.filter);
 
-   
-    
-
-    const handleSelect = () => {
-            dispatch(getTypes());
+    const handleSelect = (e) => {
+        dispatch(getTypes(e.target.value));
+        console.log(e.target.value);
     };
 
 
     return (
         <>
+
             <select onChange={handleSelect}>
                 <option value=''>All types</option>
                 {types.map((type, i) => (
