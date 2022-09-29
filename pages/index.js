@@ -9,7 +9,7 @@ function Home() {
 	const dispatch = useDispatch()
 
 	const { products, isLoading, isError, error } = useSelector(state => state.products)
-	console.log(products);
+	// console.log(products);
 	const { tags, search } = useSelector((state) => state.filter);
 
 	useEffect(() => {
