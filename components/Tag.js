@@ -5,7 +5,7 @@ const Tag = ({ title }) => {
     const dispatch = useDispatch();
     const { tags: selectedTags } = useSelector((state) => state.filter);
 
-    console.log(selectedTags);
+    // console.log(selectedTags);
 
     const isSelected = selectedTags.includes(title) ? true : false;
 

@@ -11,8 +11,8 @@ const initialState = {
 }
 // async thunk
 export const fetchProducts = createAsyncThunk('products/fetchproducts',
-    async ({ tags, search }) => {
-        const products = await getProducts(tags, search)
+    async ({ tags, search, types }) => {
+        const products = await getProducts(tags, search, types)
         return products;
     })
 

@@ -1,10 +1,13 @@
 import axios from "../../utils/axios";
 
-export const getProducts = async (tags, search) => {
+export const getProducts = async (tags,types, search) => {
     let queryString = "";
 
     if (tags?.length > 0) {
-        queryString += `tags=${tags}`;
+        queryString += `tags=${tags}&`;
+    }
+    if (types?.length > 0) {
+        queryString += `types=${types}&`;
     }
 
     // if (search !== "") {

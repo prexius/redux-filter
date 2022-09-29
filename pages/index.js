@@ -10,11 +10,11 @@ function Home() {
 
 	const { products, isLoading, isError, error } = useSelector(state => state.products)
 	// console.log(products);
-	const { tags, search } = useSelector((state) => state.filter);
+	const { tags, search, types } = useSelector((state) => state.filter);
 
 	useEffect(() => {
-		dispatch(fetchProducts({ tags, search }))
-	}, [dispatch, tags, search])
+		dispatch(fetchProducts({ tags, search, types }))
+	}, [dispatch, tags, search, types])
 
 	let content;
 	if (isLoading) content = "Loading"

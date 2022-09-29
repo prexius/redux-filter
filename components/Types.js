@@ -16,7 +16,7 @@ const Types = () => {
     }, [dispatch])
 
     const changeTypeHandler = (e) => {
-        dispatch(setSelectedType(e.target.value))
+        setSelectedType(e.target.value)
     };
 
 
