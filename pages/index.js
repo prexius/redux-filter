@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Types from "../components/Types";
 import ProductItem from "../components/ProductItem";
 import Tags from "../components/Tags";
 import { fetchProducts } from "../redux/products/products";
@@ -9,12 +8,11 @@ function Home() {
 	const dispatch = useDispatch()
 
 	const { products, isLoading, isError, error } = useSelector(state => state.products)
-	const { tags, search, types } = useSelector((state) => state.filter);
-	// console.log(types);
+	const { tags } = useSelector((state) => state.filter);
 
 	useEffect(() => {
-		dispatch(fetchProducts({ tags, search, types }))
-	}, [dispatch, tags, search, types])
+		dispatch(fetchProducts({ tags }))
+	}, [dispatch, tags])
 
 	let content;
 	if (isLoading) content = "Loading"
@@ -32,9 +30,6 @@ function Home() {
 		<>
 			<div className="container mx-auto">
 				<Tags />
-				<br />
-				<br />
-				<Types />
 			</div>
 			<section className="pt-12">
 				<div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">

@@ -1,11 +1,10 @@
 import axios from "../../utils/axios";
 
-export const getProducts = async (tags,types, search) => {
+export const getProducts = async (tags) => {
 
     const qtags = tags?.length > 0 && `tags=${tags}&`
-    const qtypes = types?.length > 0 && `types=${types}`
 
-    const response = await axios.get(`/products?${qtags}${qtypes}`);
+    const response = await axios.get(`/products?${qtags}`);
 
     return response.data;
 };

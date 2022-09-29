@@ -11,9 +11,9 @@ const Tag = ({ tags }) => {
         <>
             <select onChange={handleSelect}>
                 <option value=''>All Tags</option>
-                {tags.map((type, i) => (
-                    <option key={i} value={type.title}>
-                        {type.title}
+                {tags.map((tag, i) => (
+                    <option key={i} value={tag.title}>
+                        {tag.title}
                     </option>
                 ))}
             </select>
