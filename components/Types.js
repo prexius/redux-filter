@@ -9,14 +9,14 @@ const Types = () => {
     const dispatch = useDispatch();
 
     const [selectType, setSelectedType] = useState("")
-    console.log(selectType);
+    // console.log(selectType);
 
     useEffect(() => {
         dispatch(fetchTypes())
     }, [dispatch])
 
     const changeTypeHandler = (e) => {
-        setSelectedType(e.target.value)
+        dispatch(setSelectedType(e.target.value))
     };
 
 
