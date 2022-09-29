@@ -2,14 +2,16 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 import { getProducts } from "./productsApi"
 
 const initialState = {
-    products: [],
     isLoading: false,
+    products: [],
+    productDetails: [],
     isError: false,
-    error: ""
+    error: "",
+    totalCount: ""
 }
 // async thunk
 export const fetchProducts = createAsyncThunk('products/fetchproducts',
-    async ({tags, search}) => {
+    async ({ tags, search }) => {
         const products = await getProducts(tags, search)
         return products;
     })
@@ -25,7 +27,8 @@ const productSlice = createSlice({
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.products = action.payload
+                state.products = action.payload;
+                state.totalCount = action.payload.totalCount;
             })
             .addCase(fetchProducts.rejected, (state, action) => {
                 state.isLoading = false;
