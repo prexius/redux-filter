@@ -1,19 +1,13 @@
 import { useDispatch } from 'react-redux';
-import { getTypes } from "../redux/filter/filter";
+import { typeSelected } from "../redux/filter/filter";
 
-
-const Types = ({ types }) => {
-
+const Type = ({ types }) => {
     const dispatch = useDispatch();
-
     const handleSelect = (e) => {
-        dispatch(getTypes(e.target.value));
+        dispatch(typeSelected(e.target.value));
     };
-
-
     return (
         <>
-
             <select onChange={handleSelect}>
                 <option value=''>All types</option>
                 {types.map((type, i) => (
@@ -27,4 +21,4 @@ const Types = ({ types }) => {
     );
 };
 
-export default Types;
+export default Type;
