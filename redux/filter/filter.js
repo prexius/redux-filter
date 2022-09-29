@@ -23,10 +23,10 @@ const filterSlice = createSlice({
             state.currentPage = action.payload;
         },
         getTypes(state, action) {
-            state.types = action.payload.data;
+            state.types = action.payload;
         },
         getSubtypes(state, action) {
-            state.subtypes = action.payload.data;
+            state.subtypes = action.payload;
         },
         getChosenType(state, action) {
             state.chosenType = action.payload;

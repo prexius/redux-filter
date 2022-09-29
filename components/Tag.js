@@ -1,32 +1,38 @@
 import { useDispatch, useSelector } from "react-redux";
 import { tagRemoved, tagSelected } from "../redux/filter/filter";
 
-const Tag = ({ title }) => {
+const Tag = ({ tags }) => {
     const dispatch = useDispatch();
     const { tags: selectedTags } = useSelector((state) => state.filter);
 
-    // console.log(selectedTags);
 
-    const isSelected = selectedTags.includes(title) ? true : false;
+    // const isSelected = selectedTags.includes(title) ? true : false;
 
+    // console.log(tags);
 
-    const style = isSelected
-        ? "bg-blue-600 text-white px-4 py-1 rounded-full cursor-pointer"
-        : "bg-blue-100 text-blue-600 px-4 py-1 rounded-full cursor-pointer";
+    // const style = "bg-blue-600 text-white px-4 py-1 rounded-full cursor-pointer";
 
-    const handleSelect = () => {
-        if (isSelected) {
-            dispatch(tagRemoved(title));
-        } else {
-            dispatch(tagSelected(title));
-        }
+    const handleSelect = (e) => {
+        dispatch(tagSelected(e.target.value));
+        console.log(e.target.value);
     };
 
     return (
         <>
-            <div className={style} onClick={handleSelect}>
-                {title}
-            </div>
+            {/* <div onClick={handleSelect}>
+                {tags.map(tag => (
+                    tag.title
+                ))}
+            </div> */}
+
+            <select onChange={handleSelect}>
+                <option value=''>All types</option>
+                {tags.map((type, i) => (
+                    <option key={i} value={type.title}>
+                        {type.title}
+                    </option>
+                ))}
+            </select>
         </>
     );
 };

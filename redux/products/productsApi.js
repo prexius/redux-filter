@@ -6,9 +6,9 @@ export const getProducts = async (tags,types, search) => {
     if (tags?.length > 0) {
         queryString += `tags=${tags}&`;
     }
-    if (types?.length > 0) {
-        queryString += `types=${types}&`;
-    }
+    // if (types?.length > 0) {
+    //     queryString += `types=${types}&`;
+    // }
 
     // if (search !== "") {
     //     queryString += `&q=${search}`;

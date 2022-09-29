@@ -8,7 +8,7 @@ const Tags = () => {
 
     const { tags } = useSelector((state) => state.tags)
     // console.log(tags);
- 
+
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const Tags = () => {
 
             {tags?.length > 0 ? <section>
                 <div className="max-w-7xl mx-auto px-5 py-6 lg:px-0 flex gap-2 border-b overflow-y-auto">
-                    {tags.map(tag => <Tag key={tag._id} title={tag.title} />)}
+                    {<Tag tags={tags} />}
 
                 </div>
             </section> : null}
