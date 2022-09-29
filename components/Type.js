@@ -8,7 +8,6 @@ const Types = ({ types }) => {
 
     const handleSelect = (e) => {
         dispatch(getTypes(e.target.value));
-        console.log(e.target.value);
     };
 
 

@@ -6,21 +6,14 @@ import Type from './Type';
 const Types = () => {
     const { types } = useSelector((state) => state.types);
     const dispatch = useDispatch();
-    // console.log(types);
 
     useEffect(() => {
         dispatch(fetchTypes())
     }, [dispatch])
 
-
-
-
-
     return (
         <>
-
             <Type types={types} />
-
         </>
     );
 };

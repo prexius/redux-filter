@@ -30,8 +30,10 @@ function Home() {
 
 	return (
 		<>
-			<Tags />
 			<div className="container mx-auto">
+				<Tags />
+				<br />
+				<br />
 				<Types />
 			</div>
 			<section className="pt-12">
