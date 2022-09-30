@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTags } from "../redux/tags/tags";
-import { tagSelected } from "../redux/filter/filter";
+import { fetchTags } from "../redux/tags";
+import { tagSelected } from "../redux/filter";
 
 const Tags = () => {
     const { tags } = useSelector((state) => state.tags)

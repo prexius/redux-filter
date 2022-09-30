@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { getTags } from "./tagsApi"
+import axios from "../utils/axios";
 
 const initialState = {
     tags: [],
@@ -7,6 +7,12 @@ const initialState = {
     isError: false,
     error: ""
 }
+
+export const getTags = async () => {
+    const response = await axios.get('/tags');
+    return response.data
+}
+
 // async thunk
 export const fetchTags = createAsyncThunk('tags/fetchTags',
     async () => {

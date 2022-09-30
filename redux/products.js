@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { getProducts } from "./productsApi"
+import axios from "../utils/axios";
 
 const initialState = {
     isLoading: false,
@@ -9,6 +9,15 @@ const initialState = {
     error: "",
     totalCount: ""
 }
+
+export const getProducts = async (tags) => {
+    const qtags = tags?.length > 0 && `tags=${tags}&`
+    const response = await axios.get(`/products?${qtags}`);
+    return response.data;
+};
+
+
+
 // async thunk
 export const fetchProducts = createAsyncThunk('products/fetchproducts',
     async ({ tags }) => {

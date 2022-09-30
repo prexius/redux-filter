@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import { getTypes } from "./typesApi"
+import axios from "../utils/axios";
+
 
 const initialState = {
     types: [],
@@ -7,6 +8,12 @@ const initialState = {
     isError: false,
     error: ""
 }
+
+export const getTypes = async () => {
+    const response = await axios.get('/types');
+    return response.data
+}
+
 // async thunk
 export const fetchTypes = createAsyncThunk('types/fetchTypes',
     async () => {

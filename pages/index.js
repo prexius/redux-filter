@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../components/ProductItem";
 import Tags from "../components/Tags";
-import { fetchProducts } from "../redux/products/products";
+import { fetchProducts } from "../redux/products";
 
 function Home() {
 	const dispatch = useDispatch()
