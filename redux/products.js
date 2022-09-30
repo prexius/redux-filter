@@ -10,9 +10,10 @@ const initialState = {
     totalCount: ""
 }
 
-export const getProducts = async (tags) => {
+export const getProducts = async (tags, types) => {
     const qtags = tags?.length > 0 && `tags=${tags}&`
-    const response = await axios.get(`/products?${qtags}`);
+    const qtypes = types?.length > 0 && `types=${types}&`
+    const response = await axios.get(`/products?${qtags}${qtypes}`);
     return response.data;
 };
 
@@ -20,8 +21,8 @@ export const getProducts = async (tags) => {
 
 // async thunk
 export const fetchProducts = createAsyncThunk('products/fetchproducts',
-    async ({ tags }) => {
-        const products = await getProducts(tags)
+    async ({ tags, types }) => {
+        const products = await getProducts(tags, types)
         return products;
     })
 
