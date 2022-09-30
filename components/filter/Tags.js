@@ -1,25 +1,25 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchTypes } from "../redux/types";
-import { typeSelected } from "../redux/filter";
+import { fetchTags } from "../../redux/tags";
+import { tagSelected } from "../../redux/filter";
 
-const Types = () => {
-    const { types } = useSelector((state) => state.types)
+const Tags = () => {
+    const { tags } = useSelector((state) => state.tags)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchTypes())
+        dispatch(fetchTags())
     }, [dispatch])
 
     const handleSelect = (e) => {
-        dispatch(typeSelected(e.target.value));
+        dispatch(tagSelected(e.target.value));
     };
 
     return (
         <>
             <select onChange={handleSelect}>
-                <option value=''>All Types</option>
-                {types.map((tag, i) => (
+                <option value=''>All Tags</option>
+                {tags.map((tag, i) => (
                     <option key={i} value={tag.title}>
                         {tag.title}
                     </option>
@@ -29,4 +29,4 @@ const Types = () => {
     );
 };
 
-export default Types;
+export default Tags;
