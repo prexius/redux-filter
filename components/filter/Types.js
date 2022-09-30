@@ -25,6 +25,14 @@ const Types = () => {
                     </option>
                 ))}
             </select>
+
+            {/* {types.map((tag, i) => (
+                <>
+                    <input type="checkbox" id={tag._id} value={tag.title} onChange={handleSelect} />
+                    <label htmlFor={tag._id}>{tag.title}</label>
+                </>
+            ))} */}
+
         </>
     );
 };

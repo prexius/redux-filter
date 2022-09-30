@@ -11,9 +11,9 @@ const initialState = {
 }
 
 export const getProducts = async (tags, types) => {
-    const qtags = tags?.length > 0 && `tags=${tags}&`
-    const qtypes = types?.length > 0 && `types=${types}&`
-    const response = await axios.get(`/products?${qtags}${qtypes}`);
+    const qtags = tags?.length > 0 && `tags=${tags}`
+    const qtypes = types?.length > 0 && `types=${types}`
+    const response = await axios.get(`/products?${qtags}&${qtypes}`);
     return response.data;
 };
 
