@@ -5,6 +5,10 @@ const TypesSchema = new mongoose.Schema(
     title: {
       type: String,
     },
+    checked: {
+      type: Boolean,
+    },
+
   }
 );
 

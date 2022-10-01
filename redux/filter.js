@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     tags: [],
     types: [],
+    selectedId: undefined
 };
 
 const filterSlice = createSlice({
@@ -13,7 +14,14 @@ const filterSlice = createSlice({
             state.tags = action.payload;
         },
         typeSelected: (state, action) => {
-            state.types = action.payload;
+            state.types.push(action.payload);
+        },
+        typeRemoved: (state, action) => {
+            const indexToRemove = state.types.indexOf(action.payload);
+
+            if (indexToRemove !== -1) {
+                state.types.splice(indexToRemove, 1);
+            }
         },
     },
 });
@@ -21,5 +29,6 @@ const filterSlice = createSlice({
 export default filterSlice.reducer;
 export const {
     tagSelected,
-    typeSelected
+    typeSelected,
+    typeRemoved
 } = filterSlice.actions;
