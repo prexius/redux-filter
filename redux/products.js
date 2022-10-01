@@ -11,9 +11,21 @@ const initialState = {
 }
 
 export const getProducts = async (tags, types) => {
-    const qtags = tags?.length > 0 && `tags=${tags}`
-    const qtypes = types?.length > 0 && `types=${types}`
-    const response = await axios.get(`/products?${qtags}&${qtypes}`);
+    // const qtags = tags?.length > 0 && tags.map((tag) => `tags_like=${tag}`)
+    // const qtypes = types?.length > 0 && `types=${types}`
+    // let qtags = tags?.length > 0 && `tags=${tags}`
+    // let qtypes = types?.length > 0 && types.map((type) => `types=${type}`)
+    let qstr = "";
+
+    if (types?.length > 0) {
+        qstr += types.map((type) => `types=${type}`).join("&");
+    }
+
+    if (tags?.length > 0) {
+        qstr += `&tags=${tags}`;
+    }
+
+    const response = await axios.get(`/products?${qstr}`);
     return response.data;
 };
 
