@@ -28,7 +28,7 @@ export const getProducts = async (tags, types) => {
     const response = await axios.get(`/products?${qstr}`);
     return response.data;
 };
-
+  
 
 
 // async thunk
