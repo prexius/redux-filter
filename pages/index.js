@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import ProductItem from "../components/ProductItem";
 import Tags from "../components/filter/Tags";
 import { fetchProducts } from "../redux/products";
-import Types from '../components/filter/Types';
 
 function Home() {
 	const dispatch = useDispatch()
@@ -31,7 +30,6 @@ function Home() {
 		<>
 			<div className="container mx-auto">
 				<Tags />
-				<Types />
 			</div>
 			<section className="pt-12">
 				<div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto px-5 lg:px-0 min-h-[300px]">

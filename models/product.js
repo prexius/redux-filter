@@ -2,92 +2,31 @@ import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema(
     {
-        jobTitle: {
+        title: {
             type: String,
         },
-        companyLogo: {
+        description: {
             type: String,
         },
-        companyTitle: {
+        author: {
             type: String,
         },
-        companyLocation: {
+        avatar: {
             type: String,
         },
-        companyEstablish: {
+        date: {
             type: String,
         },
-        companySize: {
-            type: [
-                {
-                    min: {
-                        type: Number,
-
-                    },
-                    max: {
-                        type: Number,
-
-                    },
-                },
-            ],
-        },
-        // companySize: {
-        //     type: Number,
-        //     min: 0,
-        //     max: 5
-        // },
-        companyEmail: {
+        duration: {
             type: String,
         },
-        companyUrl: {
+        views: {
             type: String,
         },
-        desc: {
+        link: {
             type: String,
         },
-        country: {
-            type: String,
-        },
-        industry: {
-            type: String,
-        },
-        postedTime: {
-            type: String,
-        },
-        salary: {
-            type: [
-                {
-                    min: {
-                        type: Number,
-
-                    },
-                    max: {
-                        type: Number,
-
-                    },
-                },
-            ],
-        },
-        jobType: {
-            type: String,
-        },
-        hourlyRate: {
-            type: Number,
-
-        },
-        jobLevel: {
-            type: String,
-        },
-        experience: {
-            type: Number,
-        },
-        deadline: {
-            type: String,
-        },
-        position: {
-            type: String,
-        },
-        onsiteRemote: {
+        thumbnail: {
             type: String,
         },
         tags: {
@@ -98,61 +37,12 @@ const ProductSchema = new mongoose.Schema(
                 },
             ],
         },
-        skills: {
-            type: [
-                {
-                    type: String,
-
-                },
-            ],
+        likes: {
+            type: Number,
         },
-        featured: {
-            type: Boolean,
-        },
-        trending: {
-            type: Boolean,
-        },
-        types: {
-            type: [
-                {
-                    type: String,
-
-                },
-            ],
-        },
-        // rating: {
-        //     type: Number,
-        //     min: 0,
-        //     max: 5
-        // },
-        // prices: {
-        //     type: [
-        //         {
-        //             text: {
-        //                 type: String,
-        //                 
-        //             },
-        //             price: {
-        //                 type: Number,
-        //                 
-        //             },
-        //         },
-        //     ],
-        // },
-        // extraOptions: {
-        //     type: [
-        //         {
-        //             text: {
-        //                 type: String,
-        //                 
-        //             },
-        //             price: {
-        //                 type: Number,
-        //                 
-        //             },
-        //         },
-        //     ],
-        // },
+        unlikes: {
+            type: Number,
+        }
     },
     { timestamps: true }
 );

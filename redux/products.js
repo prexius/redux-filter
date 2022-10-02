@@ -4,28 +4,18 @@ import axios from "../utils/axios";
 const initialState = {
     isLoading: false,
     products: [],
-    productDetails: [],
     isError: false,
     error: "",
-    totalCount: ""
 }
 
-export const getProducts = async (tags, types) => {
-    // const qtags = tags?.length > 0 && tags.map((tag) => `tags_like=${tag}`)
-    // const qtypes = types?.length > 0 && `types=${types}`
-    // let qtags = tags?.length > 0 && `tags=${tags}`
-    // let qtypes = types?.length > 0 && types.map((type) => `types=${type}`)
-    let qstr = "";
-
-    if (types?.length > 0) {
-        qstr += types.map((type) => `types=${type}`).join("&");
-    }
+export const getProducts = async (tags) => {
+    let queryString = "";
 
     if (tags?.length > 0) {
-        qstr += `&tags=${tags}`;
+        queryString += tags.map((tag) => `tags=${tag}`).join("&");
     }
 
-    const response = await axios.get(`/products?${qstr}`);
+    const response = await axios.get(`/products?${queryString}`);
     return response.data;
 };
   
@@ -33,8 +23,8 @@ export const getProducts = async (tags, types) => {
 
 // async thunk
 export const fetchProducts = createAsyncThunk('products/fetchproducts',
-    async ({ tags, types }) => {
-        const products = await getProducts(tags, types)
+    async ({ tags }) => {
+        const products = await getProducts(tags)
         return products;
     })
 

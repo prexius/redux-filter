@@ -1,18 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { typeRemoved, typeSelected } from '../../redux/filter';
+import { tagRemoved, tagSelected } from '../../redux/filter';
 
-const Type = ({ title, id }) => {
+const Tag = ({ title, id }) => {
     const dispatch = useDispatch();
-    const { types } = useSelector((state) => state.filter);
-    const isSelected = types.includes(title) ? true : false;
+    const { tags } = useSelector((state) => state.filter);
+    const isSelected = tags.includes(title) ? true : false;
 
 
     const handleSelect = () => {
         if (isSelected) {
-            dispatch(typeRemoved(title));
+            dispatch(tagRemoved(title));
         } else {
-            dispatch(typeSelected(title));
+            dispatch(tagSelected(title));
         }
     };
     return (
@@ -23,4 +23,4 @@ const Type = ({ title, id }) => {
     );
 };
 
-export default Type;
+export default Tag;

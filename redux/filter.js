@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    tags: [],
-    types: [],
-    selectedId: undefined
+    tags: []
 };
 
 const filterSlice = createSlice({
@@ -11,16 +9,13 @@ const filterSlice = createSlice({
     initialState,
     reducers: {
         tagSelected: (state, action) => {
-            state.tags = action.payload;
+            state.tags.push(action.payload);
         },
-        typeSelected: (state, action) => {
-            state.types.push(action.payload);
-        },
-        typeRemoved: (state, action) => {
-            const indexToRemove = state.types.indexOf(action.payload);
+        tagRemoved: (state, action) => {
+            const indexToRemove = state.tags.indexOf(action.payload);
 
             if (indexToRemove !== -1) {
-                state.types.splice(indexToRemove, 1);
+                state.tags.splice(indexToRemove, 1);
             }
         },
     },
@@ -29,6 +24,5 @@ const filterSlice = createSlice({
 export default filterSlice.reducer;
 export const {
     tagSelected,
-    typeSelected,
-    typeRemoved
+    tagRemoved
 } = filterSlice.actions;
