@@ -2,13 +2,28 @@ import mongoose from "mongoose";
 
 const MovieSchema = new mongoose.Schema(
     {
-        name: { type: String, required: true },
-        img: { type: String, required: true },
-        year: { type: Number, required: true },
-        genre: { type: [String], required: true },
-        rating: { type: Number, required: true }
+        name: {
+            type: String,
+            required: 'This field is required'
+        },
+        description: {
+            type: String,
+            required: true
+        },
+        category: {
+            type: Array,
+            require: true
+        },
+        test: {
+            type: Array,
+            require: true
+        },
+        thumbnail: {
+            type: String,
+            required: true
+        }
     },
     { timestamps: true }
 );
-
+MovieSchema.index({ "$**" : 'text' });
 export default mongoose.models.Movie || mongoose.model("Movie", MovieSchema);
