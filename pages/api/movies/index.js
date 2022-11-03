@@ -9,8 +9,6 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET':
             let { limit = 5, page = 1, category, test, q } = req.query;
-
-            // let category = req.query.category || "all";
             const limitRecords = parseInt(limit);
             const skip = (page - 1) * limit;
 
@@ -29,8 +27,8 @@ export default async function handler(req, res) {
             if (test) query.test = { $in: test };
             // console.log(category);
 
-           
 
+           
 
 
             try {
