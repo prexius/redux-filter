@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     switch (method) {
         case 'GET':
-            let { limit = 5, page = 1, category, test, q } = req.query;
+            let { limit = 5, page = 1, skills, tags,country,position, q } = req.query;
             const limitRecords = parseInt(limit);
             const skip = (page - 1) * limit;
 
@@ -17,18 +17,15 @@ export default async function handler(req, res) {
                 query = { $text: { $search: q } };
             }
 
-            // req.query.category ? category = category.split(",") : category = [category];
-            category ? category = category.split(",") : null;
-            if (category) query.category = { $in: category };
+            skills ? skills = skills.split(",") : null;
+            if (skills) query.skills = { $in: skills };
 
+            tags ? tags = tags.split(",") : null;
+            if (tags) query.tags = { $in: tags };
+            
+            if (country) query.country = country;
+            if (position) query.position = position;
 
-
-            test ? test = test.split(",") : null;
-            if (test) query.test = { $in: test };
-            // console.log(category);
-
-
-           
 
 
             try {

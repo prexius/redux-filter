@@ -1,40 +1,52 @@
-import dbConnect from '../../../dbConnect'
-import Product from '../../../models/product'
+import dbConnect from '../../../dbConnect';
+import Movie from '../../../models/movie';
 
 export default async function handler(req, res) {
-  const { method } = req
+    const { method } = req
 
-  await dbConnect()
-  // const { tags, address } = req.query;
-  //   const filter = {}
-  //   if (tags) {
-  //       filter.tags = tags
-  //   }
-    // if (address) {
-    //     filter.address = address
-    // }
+    await dbConnect()
 
-  switch (method) {
-    case 'GET':
-      try {
-        const products = await Product.find(req.query) /* find all the data in our database */
-        res.status(200).json(products)
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
-    case 'POST':
-      try {
-        const product = await Product.create(
-          req.body
-        ) /* create a new model in the database */
-        res.status(201).json(product)
-      } catch (error) {
-        res.status(400).json({ success: false })
-      }
-      break
-    default:
-      res.status(400).json({ success: false })
-      break
-  }
+    switch (method) {
+        case 'GET':
+            let { limit = 5, page = 1, skills, tags,country,position, q } = req.query;
+            const limitRecords = parseInt(limit);
+            const skip = (page - 1) * limit;
+
+            let query = {};
+            if (q) {
+                query = { $text: { $search: q } };
+            }
+
+            skills ? skills = skills.split(",") : null;
+            if (skills) query.skills = { $in: skills };
+
+            tags ? tags = tags.split(",") : null;
+            if (tags) query.tags = { $in: tags };
+            
+            if (country) query.country = country;
+            if (position) query.position = position;
+
+
+
+            try {
+                const products = await Product.find(query).limit(limitRecords).skip(skip);
+                res.json({ page: page, limit: limitRecords, products });
+            } catch (err) {
+                res.status(400).json({ message: err })
+            }
+            break
+        case 'POST':
+            try {
+                const movie = await Product.create(
+                    req.body
+                ) /* create a new model in the database */
+                res.status(201).json({ success: true, data: movie })
+            } catch (error) {
+                res.status(400).json({ success: false })
+            }
+            break
+        default:
+            res.status(400).json({ success: false })
+            break
+    }
 }

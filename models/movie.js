@@ -2,28 +2,112 @@ import mongoose from "mongoose";
 
 const MovieSchema = new mongoose.Schema(
     {
-        name: {
+        jobTitle: {
             type: String,
-            required: 'This field is required'
         },
-        description: {
+        slug: {
             type: String,
-            required: true
         },
-        category: {
-            type: Array,
-            require: true
-        },
-        test: {
-            type: Array,
-            require: true
-        },
-        thumbnail: {
+        companyLogo: {
             type: String,
-            required: true
+        },
+        companyTitle: {
+            type: String,
+        },
+        companyLocation: {
+            type: String,
+        },
+        companyEstablish: {
+            type: String,
+        },
+        companySize: {
+            type: [
+                {
+                    min: {
+                        type: Number,
+
+                    },
+                    max: {
+                        type: Number,
+
+                    },
+                },
+            ],
+        },
+        companyEmail: {
+            type: String,
+        },
+        companyUrl: {
+            type: String,
+        },
+        desc: {
+            type: String,
+        },
+        country: {
+            type: String,
+        },
+        industry: {
+            type: String,
+        },
+        salary: {
+            type: [
+                {
+                    min: {
+                        type: Number,
+
+                    },
+                    max: {
+                        type: Number,
+
+                    },
+                },
+            ],
+        },
+        jobType: {
+            type: String,
+        },
+        hourlyRate: {
+            type: Number,
+        },
+        jobLevel: {
+            type: String,
+        },
+        experience: {
+            type: String,
+        },
+        deadline: {
+            type: String,
+        },
+        position: {
+            type: String,
+        },
+        onsiteRemote: {
+            type: String,
+        },
+        tags: {
+            type: [
+                {
+                    type: String,
+
+                },
+            ],
+        },
+        skills: {
+            type: [
+                {
+                    type: String,
+
+                },
+            ],
+        },
+        featured: {
+            type: Boolean,
+        },
+        trending: {
+            type: Boolean,
         }
     },
     { timestamps: true }
 );
-MovieSchema.index({ "$**" : 'text' });
+MovieSchema.index({ "$**": 'text' });
 export default mongoose.models.Movie || mongoose.model("Movie", MovieSchema);

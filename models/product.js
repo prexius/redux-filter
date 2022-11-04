@@ -2,31 +2,86 @@ import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema(
     {
-        title: {
+        jobTitle: {
             type: String,
         },
-        description: {
+        slug: {
             type: String,
         },
-        author: {
+        companyLogo: {
             type: String,
         },
-        avatar: {
+        companyTitle: {
             type: String,
         },
-        date: {
+        companyLocation: {
             type: String,
         },
-        duration: {
+        companyEstablish: {
             type: String,
         },
-        views: {
+        companySize: {
+            type: [
+                {
+                    min: {
+                        type: Number,
+
+                    },
+                    max: {
+                        type: Number,
+
+                    },
+                },
+            ],
+        },
+        companyEmail: {
             type: String,
         },
-        link: {
+        companyUrl: {
             type: String,
         },
-        thumbnail: {
+        desc: {
+            type: String,
+        },
+        country: {
+            type: String,
+        },
+        industry: {
+            type: String,
+        },
+        salary: {
+            type: [
+                {
+                    min: {
+                        type: Number,
+
+                    },
+                    max: {
+                        type: Number,
+
+                    },
+                },
+            ],
+        },
+        jobType: {
+            type: String,
+        },
+        hourlyRate: {
+            type: Number,
+        },
+        jobLevel: {
+            type: String,
+        },
+        experience: {
+            type: String,
+        },
+        deadline: {
+            type: String,
+        },
+        position: {
+            type: String,
+        },
+        onsiteRemote: {
             type: String,
         },
         tags: {
@@ -37,14 +92,22 @@ const ProductSchema = new mongoose.Schema(
                 },
             ],
         },
-        likes: {
-            type: Number,
+        skills: {
+            type: [
+                {
+                    type: String,
+
+                },
+            ],
         },
-        unlikes: {
-            type: Number,
+        featured: {
+            type: Boolean,
+        },
+        trending: {
+            type: Boolean,
         }
     },
     { timestamps: true }
 );
-
+ProductSchema.index({ "$**": 'text' });
 export default mongoose.models.Product || mongoose.model("Product", ProductSchema);
