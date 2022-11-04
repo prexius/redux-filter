@@ -8,7 +8,20 @@ export default async function handler(req, res) {
 
     switch (method) {
         case 'GET':
-            let { limit = 5, page = 1, skills, tags, country, position, q } = req.query;
+            let {
+                limit = 5,
+                page = 1,
+                skills,
+                tags,
+                country,
+                position,
+                industry,
+                salary,
+                experience,
+                onsiteRemote,
+                jobType,
+                q
+            } = req.query;
             const limitRecords = parseInt(limit);
             const skip = (page - 1) * limit;
 
@@ -25,6 +38,11 @@ export default async function handler(req, res) {
 
             if (country) query.country = country;
             if (position) query.position = position;
+            if (industry) query.industry = industry;
+            if (salary) query.salary = salary;
+            if (experience) query.experience = experience;
+            if (onsiteRemote) query.onsiteRemote = onsiteRemote;
+            if (jobType) query.jobType = jobType;
 
 
 

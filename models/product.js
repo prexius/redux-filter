@@ -66,6 +66,9 @@ const ProductSchema = new mongoose.Schema(
         jobType: {
             type: String,
         },
+        jobPosted: {
+            type: String,
+        },
         hourlyRate: {
             type: Number,
         },
