@@ -1,5 +1,5 @@
 import dbConnect from '../../../dbConnect';
-import Movie from '../../../models/movie';
+import Product from '../../../models/product';
 
 export default async function handler(req, res) {
     const { method } = req
@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     switch (method) {
         case 'GET':
-            let { limit = 5, page = 1, skills, tags,country,position, q } = req.query;
+            let { limit = 5, page = 1, skills, tags, country, position, q } = req.query;
             const limitRecords = parseInt(limit);
             const skip = (page - 1) * limit;
 
@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 
             tags ? tags = tags.split(",") : null;
             if (tags) query.tags = { $in: tags };
-            
+
             if (country) query.country = country;
             if (position) query.position = position;
 
