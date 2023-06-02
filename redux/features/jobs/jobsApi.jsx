@@ -11,6 +11,16 @@ export const jobsApi = createApi({
         getJobById: builder.query({
             query: (id) => `jobs/${id}`,
         }),
+        getFilterJobs: builder.query({
+            query: ({ country }) => {
+                // if (country?.length > 0) {
+                const likes = `country=${country}`
+                // }
+                const queryString = `jobs?${likes}`
+                return queryString
+            }
+        }),
+
         deleteJob: builder.mutation({
             query: (id) => ({
                 url: `jobs/${id}`,
@@ -37,6 +47,7 @@ export const jobsApi = createApi({
 export const {
     useGetAlljobsQuery,
     useGetJobByIdQuery,
+    useGetFilterJobsQuery,
     useDeleteJobMutation,
     useUpdateJobMutation,
     useAddJobMutation

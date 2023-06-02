@@ -9,11 +9,11 @@ const initialState = {
 }
 
 export const getProducts = async (tags) => {
-    let queryString = "";
-
+    
     if (tags?.length > 0) {
         queryString += tags.map((tag) => `tags=${tag}`).join("&");
     }
+    let queryString = "";
 
     const response = await axios.get(`/products?${queryString}`);
     return response.data;
