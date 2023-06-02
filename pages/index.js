@@ -5,13 +5,13 @@ function Home() {
     console.log(data)
     return (
         <>
-            {/* {data?.map((d, i) => (
+            {data?.products.map((d, i) => (
                 <h2 key={i}>
-                    <Link href={`/post/${d.id}`}>
-                        {d.title}
+                    <Link href={`/jobs/${d._id}`}>
+                        {d.jobTitle}
                     </Link>
                 </h2>)
-            )} */}
+            )}
 
         </>
     )
