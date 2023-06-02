@@ -2,7 +2,7 @@ import { useGetAlljobsQuery } from "@redux/features/jobs/jobsApi"
 import Link from "next/link"
 function Home() {
     const { data, error, isLoading } = useGetAlljobsQuery()
-    console.log(data)
+    // console.log(data)
     return (
         <>
             {data?.products.map((d, i) => (
